@@ -1,0 +1,20 @@
+import fastapi
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str = None):
+    return {"item_id": item_id, "q": q}
+
+@app.get("/users")
+def get_users():
+    return [
+        {"id": 1, "name": "Vignesh"},
+        {"id": 2, "name": "Arun"},
+        {"id": 3, "name": "Kumar"}
+    ]
